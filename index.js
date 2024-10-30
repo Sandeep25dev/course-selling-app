@@ -10,11 +10,11 @@ app.get("/", function (req, res) {
   res.send("Home Page");
 });
 
-app.use("/user", userRouter);
+app.use("/api/v1/user", userRouter);
 
-app.use("/course", courseRouter);
+app.use("/api/v1/course", courseRouter);
 
-app.use("/admin", adminRouter);
+app.use("/api/v1/admin", adminRouter);
 
 app.listen(3003, () => {
   console.log("Server is live on port 3003");
