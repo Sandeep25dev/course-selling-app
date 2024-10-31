@@ -20,6 +20,17 @@ adminRouter.post("/course", function (req, res) {
   });
 });
 
+adminRouter.put("/course", function (req, res) {
+  res.json({
+    message: "New Course Created",
+  });
+});
+adminRouter.get("/course/bulk", function (req, res) {
+  res.json({
+    message: "New Course Created",
+  });
+});
+
 module.exports = {
   adminRouter: adminRouter,
 };
