@@ -4,17 +4,23 @@ const { purchaseModel, courseModel } = require("../db");
 const { userMiddleware } = require("../middlewares/user");
 
 courseRouter.post("/purchase", userMiddleware, async function (req, res) {
-  const userId = req.userId;
-  const courseId = req.body;
+  try {
+    const userId = req.userId;
+    const courseId = req.body.courseId;
 
-  await purchaseModel.create({
-    userId,
-    courseId,
-  });
+    await purchaseModel.create({
+      userId,
+      courseId,
+    });
 
-  res.json({
-    message: "You have successfully bought a course",
-  });
+    res.json({
+      message: "You have successfully bought a course",
+    });
+  } catch (err) {
+    res.status(403).json({
+      message: "Error while creating course",
+    });
+  }
 });
 
 courseRouter.get("/preview", async function (req, res) {
